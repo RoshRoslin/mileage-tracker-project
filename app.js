@@ -90,8 +90,8 @@ document.getElementById('mileage-form').addEventListener('submit', function(e){
 
 
 
-  let tripCost = (gasCost/vehicleMpg) * mileage;
-  console.log(tripCost);
+  const tripCost = (gasCost/vehicleMpg) * mileage;
+
 
   //create new entry, send variables to constructor
   const entry = new Entry(date, start, destination, mileage, tripCost)
