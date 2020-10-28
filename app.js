@@ -1,9 +1,10 @@
 class Entry {
-  constructor(date, start, destination, mileage){
+  constructor(date, start, destination, mileage, tripCost){
     this.date = date;
     this.start = start;
     this.destination = destination;
     this.mileage = mileage;
+    this.tripCost = tripCost
   }
 }
 
@@ -22,6 +23,7 @@ class UI {
     <td>${entry.start}</td>
     <td>${entry.destination}</td>
     <td>${entry.mileage}</td>
+    <td>$${entry.tripCost.toFixed(2)}</td>
     <td><a href=""class="delete">X</a></td>
     `
 
@@ -77,13 +79,22 @@ document.getElementById('mileage-form').addEventListener('submit', function(e){
   const start = document.getElementById('start').value;
   const destination = document.getElementById('destination').value;
   const mileage = document.getElementById('mileage').value;
-  parseInt(mileage);
   const date = document.getElementById('date-input').value;
+  const gasCost = document.getElementById('gas-cost').value;
+  const vehicleMpg = document.getElementById('vehicle-mpg').value;
 
-  console.log(date);
+  //convert strings to numbers
+  parseInt(mileage);
+  parseInt(gasCost);
+  parseInt(vehicleMpg);
+
+
+
+  let tripCost = (gasCost/vehicleMpg) * mileage;
+  console.log(tripCost);
 
   //create new entry, send variables to constructor
-  const entry = new Entry(date, start, destination, mileage)
+  const entry = new Entry(date, start, destination, mileage, tripCost)
 
   //instantiate new ui
   const ui = new UI();
